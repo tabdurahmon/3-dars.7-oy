@@ -24,7 +24,7 @@ function SelectPlan() {
           <h2>Advanced</h2>
           <p>$12/mo</p>
         </button>
-        <button className="card active:border-purple-600 border-2 pt-5 px-4 pb-4 w-[138px] shadow-xl">
+        <button className="card active:border-yellow-600 border-2 pt-5 px-4 pb-4 w-[138px] shadow-xl">
           <img className="w-10 mb-10" src={Pro} alt="" />
           <h2>Pro</h2>
           <p>$15/mo</p>
