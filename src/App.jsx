@@ -1,49 +1,40 @@
-import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+//layout
+import MainLayout from "./layout/MainLayout";
+//pages
+import { Finishing, Home, PickAddOns, SelectPlan, Thanks } from "./pages";
 
 function App() {
-  const [images, setImages] = useState([
+  const routes = createBrowserRouter([
     {
-      id: 1,
-      url: "https://picsum.photos/800/1200?random=1",
-      likes: 0,
-      disLikes: 0,
-    },
-    {
-      id: 2,
-      url: "https://picsum.photos/800/1200?random=2",
-      likes: 0,
-      disLikes: 0,
-    },
-
-    {
-      id: 3,
-      url: "https://picsum.photos/800/1200?random=3",
-      likes: 0,
-      disLikes: 0,
-    },
-    {
-      id: 4,
-      url: "https://picsum.photos/800/1200?random=4",
-      likes: 0,
-      disLikes: 0,
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "selectPlan",
+          element: <SelectPlan />,
+        },
+        {
+          path: "pickAddOns",
+          element: <PickAddOns />,
+        },
+        {
+          path: "finishing",
+          element: <Finishing />,
+        },
+        {
+          path: "thanks",
+          element: <Thanks />,
+        },
+      ],
     },
   ]);
-  return (
-    <div className="images-container">
-      {images.map((image) => {
-        return (
-          <div key={image.id}>
-            <img src={image.url} alt="" />
-            <div className="buttons-container">
-              <button>👍 {image.likes}</button>
-              <button>👎 {image.disLikes}</button>
-              <button>🗑</button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+
+  return <>{<RouterProvider router={routes} />} </>;
 }
 
 export default App;
